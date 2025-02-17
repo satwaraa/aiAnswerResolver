@@ -15,9 +15,8 @@ export class aiManager {
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
 
         const imagePart = await this.fileToGenerativePart(file.buffer, file.mimetype);
-        const prompt ="Analize the question and options give in the image and only tell me which option is correct a/b/c/d.";
+        const prompt = "Analyze the question and options given in the image and only respond with correct option a/b/c/d.";
         const result: GenerateContentResult = await model.generateContent([prompt, imagePart]);
         return result.response.text().toLowerCase();
-
     }
 }
